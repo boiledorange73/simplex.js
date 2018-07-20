@@ -1,6 +1,10 @@
 /*
  * Simplex
  *
+ * References:
+ *  Simplex: http://zeus.mech.kyushu-u.ac.jp/~tsuji/java_edu/Simplex_st.html
+ *  Two phase simplex: http://zeus.mech.kyushu-u.ac.jp/~tsuji/java_edu/TwoPhase.html
+ *
  * Internal data:
  *   tbl:
  *     Tableau. 2d numeric array.
