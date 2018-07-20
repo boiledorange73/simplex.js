@@ -1,0 +1,46 @@
+<html>
+<meta charset="UTF-8">
+<title>Test for simplex.js</title>
+<script src="simplex.js"></script>
+<script>
+window.onload = function() {
+  // Sets the problem.
+  //  a + 2b <= 14
+  //  a +  b <=  8
+  // 3a +  b <= 18
+  // max 2a + 3b
+  var a = new LP.Simplex.create(
+    [
+      new LP.Constraint([1, 2], 14, LP.OP_LE),
+      new LP.Constraint([1, 1],  8, LP.OP_LE),
+      new LP.Constraint([3, 1], 18, LP.OP_LE)
+    ],
+    new LP.ObjectFunction([2, 3], LP.PT_MAX),
+    ["a","b"]
+  );
+
+  // solves
+  a.solve2();
+  ans = a.answer();
+
+  // shows the answer
+  var mess = "";
+  for( var k in ans ) {
+    mess = mess + k+": \n";
+    var v = ans[k];
+    if( v instanceof Array ) {
+      for(var n = 0; n < v.length; n++ ) {
+        mess = mess + "  " + v[n] + "\n";
+      }
+    }
+    else {
+      mess = mess + "  " + v + "\n";
+    }
+  }
+  document.getElementById("RESULT").innerText = mess;
+}
+</script>
+<body>
+<pre id="RESULT"></pre>
+</body>
+</html>
